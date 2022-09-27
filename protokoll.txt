@@ -1,0 +1,14 @@
+Klienten sender en integer til serveren. 
+De 4 minst signifikante siftene kan være:
+
+0 - 0000 - Klienten terminerer pga feil    
+1 - 0001 - Klinenten terminerer normalt
+2 - 0010 - Klienten ber og én jobb
+3 - 0011 - Klienten ber om flere jobber (se under)
+4 - 0100 - Klienten vil ha alle jobbene
+
+Hvis de 4 minst signifikante bitsene er 3, 0011, skal de resterene bitsene 
+angi antall jobber som skal sendes. Så hvis vi venstreskyver inten vi sender med 
+4, så får vi antall jobber. Skal vi sende 2 jobber blir inten vi skal sende
+00000000 00000000 00000000 00100011 som vi får ved C operasjonen
+int tall = 2<<4 | 3
